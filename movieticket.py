@@ -1,5 +1,5 @@
 import json
-
+import ticket_price as tp
 # File to store the seating arrangement and bookings
 SEATING_FILE = "seats.json"
 BOOKINGS_FILE = "bookings.json"
@@ -36,13 +36,14 @@ def save_bookings(bookings):
     print("Bookings saved.")
 
 # Function to add a new booking
-def add_booking(name, age, seats, movie):
+def add_booking(name, age, seats, movie,totalprice):
     bookings = load_bookings()
     new_booking = {
         "name": name,
         "age": age,
         "seats": seats,
-        "movie": movie
+        "movie": movie,
+        "totalprice": totalprice 
     }
     bookings.append(new_booking)
     save_bookings(bookings)
@@ -67,7 +68,15 @@ def book_ticket(seats, row, start_col, end_col):
         if seats[row_index][col] == '🟥':
             print(f"Seat {row}-{col + 1} is already booked. Cannot complete booking.")
             return
-
+        
+    num_tickets=end_col-start_col+1
+    totalprice=tp.ticket_price(num_tickets)
+    # print(f"Total Price: {totalprice}")
+    confirm=input("Do you want to proceed with the booking? (yes/no): ")
+    if confirm !='yes':
+        print("Booking cancelled.")
+        return
+    
     # Book the seats
     for col in range(start_index, end_index + 1):
         seats[row_index][col] = '🟥'
@@ -80,7 +89,7 @@ def book_ticket(seats, row, start_col, end_col):
     booked_seats = [f"{row}-{i+1}" for i in range(start_index, end_index + 1)]
 
     # Save the booking details
-    add_booking(name, age, booked_seats, movie)
+    add_booking(name, age, booked_seats, movie,totalprice)
 
     # Save updated seating arrangement
     save_seats(seats)
@@ -108,6 +117,7 @@ def display_bookings():
         print(f"  Age: {booking['age']}")
         print(f"  Movie: {booking['movie']}")
         print(f"  Seats: {', '.join(booking['seats'])}")
+        print(f"  Total Price: {booking.get('totalprice', 'N/A')}")
 
 # Load the current seating arrangement
 seats = load_seats()
