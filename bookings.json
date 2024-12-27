@@ -83,5 +83,35 @@
         ],
         "movie": "xxx",
         "totalprice": 150
+    },
+    {
+        "name": "karthik",
+        "age": 30,
+        "seats": [
+            "8-2",
+            "8-3",
+            "8-4",
+            "8-5"
+        ],
+        "movie": "RRR",
+        "totalprice": 600
+    },
+    {
+        "name": "kaka",
+        "age": 40,
+        "seats": [
+            "1-1"
+        ],
+        "movie": "sex",
+        "totalprice": 150
+    },
+    {
+        "name": "loku",
+        "age": 40,
+        "seats": [
+            "6-6"
+        ],
+        "movie": "Avatar",
+        "totalprice": 150
     }
 ]

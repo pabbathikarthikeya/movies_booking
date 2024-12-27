@@ -1,6 +1,7 @@
 import json
 import ticket_price as tp
-# File to store the seating arrangement and bookings
+from movielist import load_movies, display_movies
+
 SEATING_FILE = "seats.json"
 BOOKINGS_FILE = "bookings.json"
 
@@ -13,6 +14,7 @@ def load_seats():
     except FileNotFoundError:
         seats = [['💺' for _ in range(10)] for _ in range(10)]
         print("New seating arrangement initialized.")
+    
     return seats
 
 # Function to save seats to a file
@@ -51,6 +53,30 @@ def add_booking(name, age, seats, movie,totalprice):
 
 # Function to book tickets
 def book_ticket(seats, row, start_col, end_col):
+    
+    movies=load_movies()
+    if not movies:
+        print("No movies available.")
+        return
+    display_movies(movies)
+    movie_choice=int(input("Enter the movie number: "))
+    if movie_choice < 0 or movie_choice > len(movies):
+        print("Invalid movie selection. Please try again.")
+        return
+    selected_movies=movies[movie_choice-1]
+    print(f"Selected movie: {selected_movies['title']}")
+    print("Available seats:")
+    for i,timing in enumerate(selected_movies['show_timings'],1):
+        print(f"{i}. {timing}")
+    timing_choice=int(input("Enter the timing number: "))
+    if timing_choice < 0 or timing_choice > len(selected_movies['show_timings']):
+        print("Invalid timing selection. Please try again.")
+        return
+    selected_timing=selected_movies['show_timings'][timing_choice-1]
+    print(f"Selected timing: {selected_timing}")
+
+
+
     if row < 1 or row > 10 or start_col < 1 or end_col > 10:
         print("Invalid row or column selection. Please choose within the 10x10 range.")
         return
@@ -130,7 +156,8 @@ while True:
     print("\nOptions:")
     print("1. Book tickets")
     print("2. View bookings")
-    print("3. Exit")
+    print("3. Display movies")
+    print("4. Eixt")
     choice = input("Enter your choice: ")
 
     if choice == '1':
@@ -142,6 +169,9 @@ while True:
     elif choice == '2':
         display_bookings()
     elif choice == '3':
+        movies=load_movies()
+        display_movies(movies)
+    elif choice == '4':
         print("Exiting...")
         break
     else:
