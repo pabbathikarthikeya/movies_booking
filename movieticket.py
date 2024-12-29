@@ -1,6 +1,7 @@
 import json
 import ticket_price as tp
 from movielist import load_movies, display_movies
+from emailsending import send_email
 
 SEATING_FILE = "seats.json"
 BOOKINGS_FILE = "bookings.json"
@@ -37,19 +38,55 @@ def save_bookings(bookings):
         json.dump(bookings, file, indent=4)
     print("Bookings saved.")
 
-# Function to add a new booking
-def add_booking(name, age, seats, movie,totalprice):
+def add_booking(name, age, seats, movie, totalprice):
     bookings = load_bookings()
     new_booking = {
         "name": name,
         "age": age,
         "seats": seats,
         "movie": movie,
-        "totalprice": totalprice 
+        "totalprice": totalprice
     }
     bookings.append(new_booking)
     save_bookings(bookings)
     print("Booking saved successfully!")
+    
+    sender_email = input("Enter sender email: ").strip()
+    receiver_email = input("Enter receiver email: ").strip()
+    
+    # Ensure no email details are empty
+    if not sender_email or not receiver_email:
+        print("Email addresses cannot be empty. Booking completed without sending email.")
+        return
+    
+    # Constructing the subject and message
+    subject = f"Booking Confirmation for {movie}"
+    # message = (
+    #     f"Hello {name},\n\n"
+    #     f"Thank you for booking the movie {movie}.\n"
+    #     f"Details:\n"
+    #     f"Name: {name}\n"
+    #     f"Age: {age}\n"
+    #     f"Movie: {movie}\n"
+    #     f"Seats: {', '.join(seats)}\n"
+    #     f"Total Price: {totalprice}\n\n"
+    #     f"Enjoy the show!\n"
+    # )
+    message = f"Hello {name},\n\n Thank you for booking the movie {movie}.\n Details:\n Name: {name}\n Age: {age}\n Movie: {movie}\n Seats: {', '.join(seats)}\n Total Price: {totalprice}\n\n Enjoy the show!\n"
+    
+    # Debugging the message
+    print("Constructed Email Message:\n", message)
+    
+    # Attempt to send email
+    try:
+        sender_password = "auwu yimi srwa xxtj"
+  # Consider fetching securely
+        print("Sending email...")
+        send_email(sender_email, sender_password, receiver_email, subject, message)
+        print("Email sent successfully!")
+    except Exception as e:
+        print("Failed to send email:", str(e))
+
 
 # Function to book tickets
 def book_ticket(seats, row, start_col, end_col):
@@ -157,7 +194,9 @@ while True:
     print("1. Book tickets")
     print("2. View bookings")
     print("3. Display movies")
-    print("4. Eixt")
+    print("4. Load Seats")
+    print("5. Eixt")
+    # print("5. Testing email")
     choice = input("Enter your choice: ")
 
     if choice == '1':
@@ -172,7 +211,11 @@ while True:
         movies=load_movies()
         display_movies(movies)
     elif choice == '4':
-        print("Exiting...")
+        print_seats(load_seats())
+    elif choice == '5':
+        exit()
         break
     else:
         print("Invalid choice. Please try again.")
+
+
