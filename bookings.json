@@ -113,5 +113,125 @@
         ],
         "movie": "Avatar",
         "totalprice": 150
+    },
+    {
+        "name": "Bhavya",
+        "age": 45,
+        "seats": [
+            "9-2",
+            "9-3",
+            "9-4"
+        ],
+        "movie": "Avatar",
+        "totalprice": 450
+    },
+    {
+        "name": "Karthikeya",
+        "age": 23,
+        "seats": [
+            "10-9",
+            "10-10"
+        ],
+        "movie": "RRR",
+        "totalprice": 300
+    },
+    {
+        "name": "Benny",
+        "age": 20,
+        "seats": [
+            "10-8"
+        ],
+        "movie": "RRR",
+        "totalprice": 150
+    },
+    {
+        "name": "Lowda",
+        "age": 24,
+        "seats": [
+            "10-7"
+        ],
+        "movie": "RRR",
+        "totalprice": 150
+    },
+    {
+        "name": "kingmax",
+        "age": 20,
+        "seats": [
+            "10-6"
+        ],
+        "movie": "RRR",
+        "totalprice": 150
+    },
+    {
+        "name": "Kar",
+        "age": 20,
+        "seats": [
+            "10-5"
+        ],
+        "movie": "RRR",
+        "totalprice": 150
+    },
+    {
+        "name": "kaka",
+        "age": 20,
+        "seats": [
+            "10-4"
+        ],
+        "movie": "RRR",
+        "totalprice": 150
+    },
+    {
+        "name": "roxy",
+        "age": 30,
+        "seats": [
+            "10-3"
+        ],
+        "movie": "RRR",
+        "totalprice": 150
+    },
+    {
+        "name": "kaka",
+        "age": 20,
+        "seats": [
+            "10-1"
+        ],
+        "movie": "RRR",
+        "totalprice": 150
+    },
+    {
+        "name": "kaa",
+        "age": 20,
+        "seats": [
+            "10-2"
+        ],
+        "movie": "RRR",
+        "totalprice": 150
+    },
+    {
+        "name": "ram",
+        "age": 20,
+        "seats": [
+            "9-10"
+        ],
+        "movie": "RRR",
+        "totalprice": 150
+    },
+    {
+        "name": "Karthikeya",
+        "age": 20,
+        "seats": [
+            "9-9"
+        ],
+        "movie": "Avatar",
+        "totalprice": 150
+    },
+    {
+        "name": "kaya",
+        "age": 30,
+        "seats": [
+            "9-8"
+        ],
+        "movie": "RRR",
+        "totalprice": 150
     }
 ]
