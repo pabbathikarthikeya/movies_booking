@@ -233,5 +233,95 @@
         ],
         "movie": "RRR",
         "totalprice": 150
+    },
+    {
+        "name": "manu",
+        "age": 20,
+        "seats": [
+            "9-7"
+        ],
+        "movie": "RRR",
+        "totalprice": 150
+    },
+    {
+        "name": "kaya",
+        "age": 20,
+        "seats": [
+            "9-1"
+        ],
+        "movie": "RRR",
+        "totalprice": 150
+    },
+    {
+        "name": "kaya",
+        "age": 20,
+        "seats": [
+            "9-5"
+        ],
+        "movie": "RRR",
+        "totalprice": 150
+    },
+    {
+        "name": "kaya",
+        "age": 20,
+        "seats": [
+            "9-6"
+        ],
+        "movie": "RRR",
+        "totalprice": 150
+    },
+    {
+        "name": "kaya",
+        "age": 12,
+        "seats": [
+            "8-8"
+        ],
+        "movie": "RRR",
+        "totalprice": 150
+    },
+    {
+        "name": "kaya",
+        "age": 10,
+        "seats": [
+            "8-1"
+        ],
+        "movie": "RRR",
+        "totalprice": 150
+    },
+    {
+        "name": "kaya",
+        "age": 20,
+        "seats": [
+            "1-10"
+        ],
+        "movie": "RRR",
+        "totalprice": 150
+    },
+    {
+        "name": "Nani",
+        "age": 80,
+        "seats": [
+            "1-9"
+        ],
+        "movie": "RRR",
+        "totalprice": 150
+    },
+    {
+        "name": "kaya",
+        "age": 20,
+        "seats": [
+            "7-6"
+        ],
+        "movie": "RRR",
+        "totalprice": 150
+    },
+    {
+        "name": "kaya",
+        "age": 20,
+        "seats": [
+            "1-6"
+        ],
+        "movie": "RRR",
+        "totalprice": 150
     }
 ]
