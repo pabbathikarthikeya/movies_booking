@@ -1,8 +1,9 @@
 import json
+import os
 import ticket_price as tp
 from movielist import load_movies, display_movies
 from emailsending import send_email
-
+from qrmodule import qrsending
 SEATING_FILE = "seats.json"
 BOOKINGS_FILE = "bookings.json"
 
@@ -61,31 +62,36 @@ def add_booking(name, age, seats, movie, totalprice):
     
     # Constructing the subject and message
     subject = f"Booking Confirmation for {movie}"
-    # message = (
-    #     f"Hello {name},\n\n"
-    #     f"Thank you for booking the movie {movie}.\n"
-    #     f"Details:\n"
-    #     f"Name: {name}\n"
-    #     f"Age: {age}\n"
-    #     f"Movie: {movie}\n"
-    #     f"Seats: {', '.join(seats)}\n"
-    #     f"Total Price: {totalprice}\n\n"
-    #     f"Enjoy the show!\n"
-    # )
-    message = f"Hello {name},\n\n Thank you for booking the movie {movie}.\n Details:\n Name: {name}\n Age: {age}\n Movie: {movie}\n Seats: {', '.join(seats)}\n Total Price: {totalprice}\n\n Enjoy the show!\n"
+    # qrdetails= qr.qrsending(name, age, seats, movie, totalprice)
+    message = (
+        f"Hello {name},\n\n"
+        f"Thank you for booking the movie {movie}.\n"
+        f"Details:\n"
+        f"Name: {name}\n"
+        f"Age: {age}\n"
+        f"Movie: {movie}\n"
+        f"Seats: {', '.join(seats)}\n"
+        f"Total Price: {totalprice}\n\n"
+        f"Enjoy the show!\n"
+        
+    )
     
-    # Debugging the message
-    print("Constructed Email Message:\n", message)
+    # message = f"Hello {name},\n\n Thank you for booking the movie {movie}.\n Details:\n Name: {name}\n Age: {age}\n Movie: {movie}\n Seats: {', '.join(seats)}\n Total Price: {totalprice}\n\n Enjoy the show!\n "
+    qr_path=qrsending(name, age, seats, movie, totalprice)
+    print("Qr Path:",qr_path)
+    if not os.path.exists(qr_path):
+        print(f"QR code not found at: {qr_path}. ")
+
     
     # Attempt to send email
     try:
-        sender_password = "auwu yimi srwa xxtj"
-  # Consider fetching securely
+        sender_password = "pjed dmmi rsmg kgqh"
         print("Sending email...")
-        send_email(sender_email, sender_password, receiver_email, subject, message)
+        send_email(sender_email, sender_password, receiver_email, subject, message,qr_path)
         print("Email sent successfully!")
     except Exception as e:
         print("Failed to send email:", str(e))
+
 
 
 # Function to book tickets
@@ -165,6 +171,16 @@ def print_seats(seats):
     print("   " + "-" * 50)  # Separator
     for i, row in enumerate(seats):
         print(f"{i+1:2} | " + "  ".join(row))
+def testmail():
+    sender_email=input("Enter sender email: ")
+    # receiver_email="2100039067cse.r@gmail.com"
+    receiver_email=input("Enter receiver email: ")
+    sender_password="pjed dmmi rsmg kgqh"
+    subject = "Test Email"
+    message = "This is a test email from the Movie Ticket Booking System."
+    send_email(sender_email, sender_password, receiver_email, subject, message)
+    print("Test email sent successfully!")
+
 
 # Function to display all bookings
 def display_bookings():
@@ -196,6 +212,7 @@ while True:
     print("3. Display movies")
     print("4. Load Seats")
     print("5. Eixt")
+    print("6. Testing email")
     # print("5. Testing email")
     choice = input("Enter your choice: ")
 
@@ -215,6 +232,8 @@ while True:
     elif choice == '5':
         exit()
         break
+    elif choice=='6':
+        testmail()
     else:
         print("Invalid choice. Please try again.")
 
